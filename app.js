@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.PORT | 8000;
 const hbs = require("hbs");
 const path = require("path")
-require("./src/db/conn")
+
 
 
 const bodyParser = require('body-parser');
@@ -21,16 +21,9 @@ app.set("views",template_path);
 hbs.registerPartials(partials_path);
 
 
-// app.use((req, res, next)=>{
-//     console.log("HTTP Method -" +req.method ,"url -" +req.url   )
-// })
-
-
-// app.get('/',)
-
-app.listen(port, () => {
-    console.log(`App listening on port ${port}`);
-});
-
 
 require('./route/route')(app);
+
+
+
+module.exports = app; 

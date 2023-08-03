@@ -1,6 +1,6 @@
 const { adminreg, adminlogin } = require("../controller/admincontroller")
 const { teacherreg, teacherlogin } = require("../controller/teachercontroller")
-const auth = require("../middleware/auth")
+
 const Admin = require("../model/adminmodel")
 const endpointtesting = require('../model/user')
 
@@ -16,7 +16,7 @@ module.exports = function (app) {
 ///////////////////////////this route code sections is admin dashboard///////////
 
 
-app.get(("/" ) ,auth, (req,res)=>{
+app.get(("/" ),(req,res)=>{
     res.render("index")
 
 })

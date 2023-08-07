@@ -1,22 +1,27 @@
+
+
+////////////////////////thiscode,,,,,,,,,,,impt
 const app = require('./app');
-
-
-
-
 const dotenv = require('dotenv');
 const connectDatabase = require('./config/database');
+
 //////////////handling uncaught expection error\//
+const cookieParser = require('cookie-parser');
+
+// Middleware to parse cookies
+app.use(cookieParser());
 process.on("uncaughtExpection" , (err) => {
    console.log(`Error: ${err.message}`);
    console.log(`Shutting down the server due to uncaught expection`);
    process.exit(1)
 })
 //config
-dotenv.config({path:"Dashboard/config/config.env"});
+dotenv.config({path:"./config/config.env"});
 // Connecting to database
 // port=6780
 connectDatabase()
  app.listen(process.env.PORT,()=>{
+ 
 
     console.log(`Server is working on http://localhost:${process.env.PORT}`)
  })
@@ -27,3 +32,6 @@ process.on("unhandledRejection", (err) => {
    console.log(`Shutting down the server due to unhandled promise rejection`);
    process.exit(1);
 });
+///////////////////////////impt
+
+

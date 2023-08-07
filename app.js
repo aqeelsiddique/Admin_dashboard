@@ -3,9 +3,6 @@ const app = express();
 const port = process.env.PORT | 8000;
 const hbs = require("hbs");
 const path = require("path")
-
-
-
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());

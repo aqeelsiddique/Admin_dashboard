@@ -35,6 +35,13 @@ const adminSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  role: {
+    type: String,
+    default:"admin"
+},
+
+
+    
 });
 //we are hashing a password
 
@@ -48,15 +55,15 @@ adminSchema.pre("save", async function (next) {
 
 // }
 // we are generating a token
-// adminSchema.methods.generateAuthToken = function () {
-//   try {
-//     return jwt.sign({ id: this._id }, process.env.SECRET_KEY, {
-//       // expiresIn: process.env.JWT_EXPIRE,
-//     });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+adminSchema.methods.generateAuthToken = function () {
+  try {
+    return jwt.sign({ id: this._id }, process.env.SECRET_KEY, {
+      // expiresIn: process.env.JWT_EXPIRE,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 /////////reset token password
 // adminSchema.methods.getResetPasswordToken = async function () {
